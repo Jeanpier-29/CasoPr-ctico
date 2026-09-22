@@ -1,29 +1,16 @@
-# Req.2: Validar código
-def validar_codigo(codigo):
-    # El código no puede estar vacío y debe tener al menos 5 caracteres
-    if codigo.strip() == "":
-        return False
-    if len(codigo) < 5:
-        return False
-    return True
-
 # Req.3: Validar tipo
 def validar_tipo(tipo):
     tipos_validos = ["matricula", "pagos", "plataforma", "otro"]
     return tipo.lower() in tipos_validos
 
+# Req.2: Validar código
+def validar_codigo(codigo):
+    return len(codigo) >= 5 and codigo.strip() != ""
+
 # Req.1: Registrar solicitud
 def registrar_solicitud(codigo, nombre, tipo, descripcion):
-    # Validaciones combinadas
-    if not validar_codigo(codigo):
-        return "Error: código inválido"
-    if nombre.strip() == "":
-        return "Error: nombre inválido"
-    if not validar_tipo(tipo):
-        return "Error: tipo inválido"
-    if descripcion.strip() == "":
-        return "Error: descripción inválida"
-
+    if not validar_codigo(codigo) or nombre == "" or not validar_tipo(tipo) or descripcion == "":
+        return "Error: datos inválidos"
     solicitud = {
         "codigo": codigo,
         "nombre": nombre,
@@ -32,13 +19,11 @@ def registrar_solicitud(codigo, nombre, tipo, descripcion):
     }
     return solicitud
 
-# Req.4: Mostrar menú principal
 def mostrar_menu():
     print("=== MENÚ PRINCIPAL ===")
     print("1. Registrar solicitud")
     print("2. Salir")
 
-# Programa principal interactivo
 while True:
     mostrar_menu()
     opcion = input("Elige una opción: ")
@@ -48,9 +33,8 @@ while True:
         nombre = input("Nombre: ")
         tipo = input("Tipo (matricula/pagos/plataforma/otro): ")
         descripcion = input("Descripción: ")
-
-        resultado = registrar_solicitud(codigo, nombre, tipo, descripcion)
-        print(resultado)
+        sol = registrar_solicitud(codigo, nombre, tipo, descripcion)
+        print(sol)
 
     elif opcion == "2":
         print("Saliendo del sistema... ¡Hasta pronto!")
