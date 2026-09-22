@@ -100,12 +100,7 @@ def eliminar_solicitud(codigo):
             return
     print(f"No se encontró ninguna solicitud con el código: {codigo}")
 
-# Req.12: Salir del sistema
-def salir():
-    print("Saliendo del sistema... ¡Hasta pronto!")
-    exit()
-
-# Main 
+# Main interactivo Req.1–11
 while True:
     mostrar_menu()
     opcion = input("Elige una opción: ")
@@ -131,6 +126,7 @@ while True:
         eliminar_solicitud(codigo)
 
     elif opcion == "5":
-        salir()
+        print("Saliendo del sistema... ¡Hasta pronto!")
+        break
     else:
         print("Opción inválida, intenta de nuevo.")
