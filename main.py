@@ -60,8 +60,7 @@ def mostrar_menu():
     print("1. Registrar solicitud")
     print("2. Consultar por código")
     print("3. Consultar por tipo")
-    print("4. Eliminar solicitud")
-    print("5. Salir")
+    print("4. Salir")
 
 # Req.8: Almacenar solicitudes
 solicitudes = []
@@ -91,16 +90,7 @@ def consultar_por_tipo(tipo):
     else:
         print(f"No se encontraron solicitudes del tipo: {tipo}")
 
-# Req.11: Eliminar solicitud
-def eliminar_solicitud(codigo):
-    for sol in solicitudes:
-        if sol["codigo"] == codigo:
-            solicitudes.remove(sol)
-            print(f"Solicitud eliminada correctamente: {codigo}")
-            return
-    print(f"No se encontró ninguna solicitud con el código: {codigo}")
-
-# Main interactivo Req.1–11
+# Main interactivo Req.1–10
 while True:
     mostrar_menu()
     opcion = input("Elige una opción: ")
@@ -122,10 +112,6 @@ while True:
         consultar_por_tipo(tipo)
 
     elif opcion == "4":
-        codigo = input("Código a eliminar: ")
-        eliminar_solicitud(codigo)
-
-    elif opcion == "5":
         print("Saliendo del sistema... ¡Hasta pronto!")
         break
     else:
