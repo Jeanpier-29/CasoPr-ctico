@@ -1,5 +1,6 @@
 # Req.2: Validar código
 def validar_codigo(codigo):
+    # El código no puede estar vacío y debe tener al menos 5 caracteres
     if codigo.strip() == "":
         return False
     if len(codigo) < 5:
@@ -11,9 +12,8 @@ def validar_tipo(tipo):
     tipos_validos = ["matricula", "pagos", "plataforma", "otro"]
     return tipo.lower() in tipos_validos
 
-# Req.6: Validar texto
+# Req.6: Validar texto (se usa desde Req.1)
 def validar_texto(texto):
-    # Verifica que el texto no esté vacío ni tenga solo espacios
     return texto.strip() != ""
 
 # Req.5: Calcular prioridad
@@ -43,23 +43,23 @@ def registrar_solicitud(codigo, nombre, tipo, descripcion):
     }
     return solicitud
 
-# Req.4: Mostrar menú
+# Req.4: Mostrar menú principal
 def mostrar_menu():
     print("=== MENÚ PRINCIPAL ===")
     print("1. Registrar solicitud")
     print("2. Salir")
 
+# Lista para almacenar solicitudes (Req.8 vendrá después, pero ya la dejamos lista)
 solicitudes = []
 
 def agregar_solicitud(solicitud):
     if isinstance(solicitud, dict):
         solicitudes.append(solicitud)
         print("Solicitud registrada correctamente.")
-        print(solicitud)
     else:
         print(solicitud)
 
-# Main interactivo Req.1–6
+# Main interactivo Req.1–5
 while True:
     mostrar_menu()
     opcion = input("Elige una opción: ")
