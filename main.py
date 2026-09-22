@@ -13,6 +13,7 @@ def validar_tipo(tipo):
 
 # Req.6: Validar texto
 def validar_texto(texto):
+    # Verifica que el texto no esté vacío ni tenga solo espacios
     return texto.strip() != ""
 
 # Req.5: Calcular prioridad
@@ -42,18 +43,6 @@ def registrar_solicitud(codigo, nombre, tipo, descripcion):
     }
     return solicitud
 
-# Req.7: Mostrar resumen
-def mostrar_resumen(solicitud):
-    if isinstance(solicitud, dict):
-        print("=== Resumen de Solicitud ===")
-        print(f"Código: {solicitud['codigo']}")
-        print(f"Nombre: {solicitud['nombre']}")
-        print(f"Tipo: {solicitud['tipo']}")
-        print(f"Descripción: {solicitud['descripcion']}")
-        print(f"Prioridad: {solicitud['prioridad']}")
-    else:
-        print(solicitud)
-
 # Req.4: Mostrar menú
 def mostrar_menu():
     print("=== MENÚ PRINCIPAL ===")
@@ -66,11 +55,11 @@ def agregar_solicitud(solicitud):
     if isinstance(solicitud, dict):
         solicitudes.append(solicitud)
         print("Solicitud registrada correctamente.")
-        mostrar_resumen(solicitud)  # 👈 Ahora muestra el resumen
+        print(solicitud)
     else:
         print(solicitud)
 
-# Main interactivo Req.1–7
+# Main interactivo Req.1–6
 while True:
     mostrar_menu()
     opcion = input("Elige una opción: ")
