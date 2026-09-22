@@ -1,15 +1,6 @@
-# Req.3: Validar tipo
-def validar_tipo(tipo):
-    tipos_validos = ["matricula", "pagos", "plataforma", "otro"]
-    return tipo.lower() in tipos_validos
-
-# Req.2: Validar código
-def validar_codigo(codigo):
-    return len(codigo) >= 5 and codigo.strip() != ""
-
 # Req.1: Registrar solicitud
 def registrar_solicitud(codigo, nombre, tipo, descripcion):
-    if not validar_codigo(codigo) or nombre == "" or not validar_tipo(tipo) or descripcion == "":
+    if not validar_codigo(codigo) or nombre == "" or tipo == "" or descripcion == "":
         return "Error: datos inválidos"
     solicitud = {
         "codigo": codigo,
@@ -18,6 +9,10 @@ def registrar_solicitud(codigo, nombre, tipo, descripcion):
         "descripcion": descripcion
     }
     return solicitud
+
+# Req.2: Validar código
+def validar_codigo(codigo):
+    return len(codigo) >= 5 and codigo.strip() != ""
 
 def mostrar_menu():
     print("=== MENÚ PRINCIPAL ===")
@@ -31,7 +26,7 @@ while True:
     if opcion == "1":
         codigo = input("Código: ")
         nombre = input("Nombre: ")
-        tipo = input("Tipo (matricula/pagos/plataforma/otro): ")
+        tipo = input("Tipo: ")
         descripcion = input("Descripción: ")
         sol = registrar_solicitud(codigo, nombre, tipo, descripcion)
         print(sol)
