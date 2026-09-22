@@ -12,34 +12,23 @@ def validar_tipo(tipo):
     tipos_validos = ["matricula", "pagos", "plataforma", "otro"]
     return tipo.lower() in tipos_validos
 
-# Req.6: Validar texto (se usa desde Req.1)
-def validar_texto(texto):
-    return texto.strip() != ""
-
-# Req.5: Calcular prioridad
-def calcular_prioridad(tipo):
-    if tipo.lower() in ["matricula", "pagos", "plataforma"]:
-        return "Alta"
-    else:
-        return "Baja"
-
 # Req.1: Registrar solicitud
 def registrar_solicitud(codigo, nombre, tipo, descripcion):
+    # Validaciones combinadas
     if not validar_codigo(codigo):
         return "Error: código inválido"
     if nombre.strip() == "":
         return "Error: nombre inválido"
     if not validar_tipo(tipo):
         return "Error: tipo inválido"
-    if not validar_texto(descripcion):
+    if descripcion.strip() == "":
         return "Error: descripción inválida"
 
     solicitud = {
         "codigo": codigo,
         "nombre": nombre,
         "tipo": tipo,
-        "descripcion": descripcion,
-        "prioridad": calcular_prioridad(tipo)
+        "descripcion": descripcion
     }
     return solicitud
 
@@ -49,17 +38,7 @@ def mostrar_menu():
     print("1. Registrar solicitud")
     print("2. Salir")
 
-# Lista para almacenar solicitudes (Req.8 vendrá después, pero ya la dejamos lista)
-solicitudes = []
-
-def agregar_solicitud(solicitud):
-    if isinstance(solicitud, dict):
-        solicitudes.append(solicitud)
-        print("Solicitud registrada correctamente.")
-    else:
-        print(solicitud)
-
-# Main interactivo Req.1–5
+# Programa principal interactivo
 while True:
     mostrar_menu()
     opcion = input("Elige una opción: ")
@@ -69,8 +48,9 @@ while True:
         nombre = input("Nombre: ")
         tipo = input("Tipo (matricula/pagos/plataforma/otro): ")
         descripcion = input("Descripción: ")
-        sol = registrar_solicitud(codigo, nombre, tipo, descripcion)
-        agregar_solicitud(sol)
+
+        resultado = registrar_solicitud(codigo, nombre, tipo, descripcion)
+        print(resultado)
 
     elif opcion == "2":
         print("Saliendo del sistema... ¡Hasta pronto!")
