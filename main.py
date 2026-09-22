@@ -58,8 +58,7 @@ def mostrar_resumen(solicitud):
 def mostrar_menu():
     print("=== MENÚ PRINCIPAL ===")
     print("1. Registrar solicitud")
-    print("2. Consultar por código")
-    print("3. Salir")
+    print("2. Salir")
 
 # Req.8: Almacenar solicitudes
 solicitudes = []
@@ -72,15 +71,7 @@ def agregar_solicitud(solicitud):
     else:
         print(solicitud)
 
-# Req.9: Consultar por código
-def consultar_solicitud(codigo):
-    for sol in solicitudes:
-        if sol["codigo"] == codigo:
-            mostrar_resumen(sol)
-            return
-    print(f"No se encontró ninguna solicitud con el código: {codigo}")
-
-# Main interactivo Req.1–9
+# Main interactivo Req.1–8
 while True:
     mostrar_menu()
     opcion = input("Elige una opción: ")
@@ -94,10 +85,6 @@ while True:
         agregar_solicitud(sol)
 
     elif opcion == "2":
-        codigo = input("Código a consultar: ")
-        consultar_solicitud(codigo)
-
-    elif opcion == "3":
         print("Saliendo del sistema... ¡Hasta pronto!")
         break
     else:
