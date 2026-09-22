@@ -60,18 +60,17 @@ def mostrar_menu():
     print("1. Registrar solicitud")
     print("2. Salir")
 
-# Req.8: Almacenar solicitudes
 solicitudes = []
 
 def agregar_solicitud(solicitud):
     if isinstance(solicitud, dict):
         solicitudes.append(solicitud)
         print("Solicitud registrada correctamente.")
-        mostrar_resumen(solicitud)
+        mostrar_resumen(solicitud)  # 👈 Ahora muestra el resumen
     else:
         print(solicitud)
 
-# Main interactivo Req.1–8
+# Main interactivo Req.1–7
 while True:
     mostrar_menu()
     opcion = input("Elige una opción: ")
