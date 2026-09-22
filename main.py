@@ -59,8 +59,7 @@ def mostrar_menu():
     print("=== MENÚ PRINCIPAL ===")
     print("1. Registrar solicitud")
     print("2. Consultar por código")
-    print("3. Consultar por tipo")
-    print("4. Salir")
+    print("3. Salir")
 
 # Req.8: Almacenar solicitudes
 solicitudes = []
@@ -81,16 +80,7 @@ def consultar_solicitud(codigo):
             return
     print(f"No se encontró ninguna solicitud con el código: {codigo}")
 
-# Req.10: Consultar por tipo
-def consultar_por_tipo(tipo):
-    encontrados = [sol for sol in solicitudes if sol["tipo"].lower() == tipo.lower()]
-    if encontrados:
-        for sol in encontrados:
-            mostrar_resumen(sol)
-    else:
-        print(f"No se encontraron solicitudes del tipo: {tipo}")
-
-# Main interactivo Req.1–10
+# Main interactivo Req.1–9
 while True:
     mostrar_menu()
     opcion = input("Elige una opción: ")
@@ -108,10 +98,6 @@ while True:
         consultar_solicitud(codigo)
 
     elif opcion == "3":
-        tipo = input("Tipo a consultar: ")
-        consultar_por_tipo(tipo)
-
-    elif opcion == "4":
         print("Saliendo del sistema... ¡Hasta pronto!")
         break
     else:
